@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0e0f12;
+            color: #f2f4f8;
+            font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ffa300, #ef68a7);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: 24px;
+            margin: 0 auto 20px;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 163, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffa300;
+            animation: spin 1s ease-in-out infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .countdown {
+            font-size: 14px;
+            color: #c7c9cf;
+            margin-top: 10px;
+        }
+        .btn-skip {
+            background: #ffa300;
+            color: #111;
+            border: 0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.2s ease;
+        }
+        .btn-skip:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">PA</div>
+        <h2>Redirecting to PlayerAuctions</h2>
+        <div class="loading"></div>
+        <div class="countdown" id="countdown">Redirecting in 3 seconds...</div>
+        <br>
+        <a href="working-site.html" class="btn-skip">Skip Redirect</a>
+    </div>
+
+    <script>
+        let countdown = 3;
+        const countdownEl = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            countdown--;
+            if (countdown > 0) {
+                countdownEl.textContent = `Redirecting in ${countdown} seconds...`;
+            } else {
+                clearInterval(timer);
+                window.location.href = 'working-site.html';
+            }
+        }, 1000);
+        
+        // Auto redirect after 3 seconds
+        setTimeout(() => {
+            window.location.href = 'working-site.html';
+        }, 3000);
+    </script>
+</body>
+</html>
